@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { LIVE_COIN_WATCH_API_KEY, LIVE_COIN_WATCH_API_URL } from '../config/env';
 import { COIN_TO_CODE_MAP, CoinData } from '../models/coinData';
 import { ICoinData } from '../models/coinData';
-import addCoinData from '../data_controllers/coinData';
+import CoinDataController from '../data_controllers/coinData';
 
 interface RequestPayload {
     currency: string;
@@ -34,7 +34,7 @@ const getAndStoreCoinData = async (currency: string, coin_code: string): Promise
                 created_at: currentTime
             };
 
-            await addCoinData(coinData);
+            await CoinDataController.addCoinData(coinData);
             console.log('Response stored in MongoDB');
         } else {
             console.log(response.data);

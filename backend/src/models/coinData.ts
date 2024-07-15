@@ -1,5 +1,43 @@
 import * as mongoose from 'mongoose';
 
+class CoinDataSearchParams {
+  code?: string;
+  offset: number = 0;
+  limit: number = 20;
+  sort_by: string = 'created_at';
+  order: string = 'desc';
+
+  constructor(params: Partial<CoinDataSearchParams>) {
+    Object.assign(this, params);
+    this.validate();
+  }
+
+  private validate() {
+    if (this.offset < 0) {
+      throw new Error('Offset must be a non-negative number');
+    }
+    if (this.limit <= 0) {
+      throw new Error('Limit must be a positive number');
+    }
+    if (!['asc', 'desc'].includes(this.order)) {
+      throw new Error('Order must be either "asc" or "desc"');
+    }
+  }
+
+  getFilter(): any {
+    let filter: any = {};
+    if (this.code) {
+      filter.code = this.code;
+    }
+    return filter;
+  }
+}
+
+type CoinDataSearchResponse = {
+  data: ICoinData[];
+  total: number;
+};
+
 const COIN_TO_CODE_MAP: Record<string, string> = {
     "bitcoin": "BTC",
     "ethereum": "ETH",
@@ -69,7 +107,7 @@ CoinDataSchema.index({ created_at: -1 }, { name: 'created_at_index' });
 
 const CoinData = mongoose.model<ICoinData>('CoinData', CoinDataSchema);
 
-export { CoinData, ICoinData, COIN_TO_CODE_MAP };
+export { CoinData, ICoinData, COIN_TO_CODE_MAP, CoinDataSearchParams, CoinDataSearchResponse };
 
 
 
