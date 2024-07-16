@@ -26,90 +26,56 @@ The data is fetched from the LiveCoinWatch API. The application currently suppor
 ## Installation and Running the Application
 1. Clone the repository
 ```bash
-git clone https://github.com/Manohar-A/watch-price-live.git
-cd watch-price-live
+# Clone the repository
+git clone https://github.com/your-repo/real-time-price-data-app.git
+
+# Navigate to the cloned repository
+cd real-time-price-data-app
 ```
 
 2. Ensure MongoDB is running
 Make sure your MongoDB server is running locally on `localhost:27017`.
 
-3. Run the setup script
-- The provided start.sh script will navigate to the backend and frontend directories, install the necessary dependencies, and start both servers.
 
-
-```bash
-./start.sh
+3. Run API Server
+- Navigate to the backend folder
 ```
-
-The script performs the following steps:
-- Navigates to the backend folder
-- Installs backend dependencies
-- Starts the backend server on port 5001
-- Navigates back to the root folder
-- Navigates to the frontend folder
-- Installs frontend dependencies
-- Starts the frontend server on port 3000
-
-Here is the content of the start.sh script:
-```bash
-#!/bin/bash
-
-# Navigate to the backend folder
 cd backend
-
-# Install backend dependencies
+```
+- Install backend dependencies
+```
 npm install
-
-# Start the backend server on port 5001
+```
+- Start the backend server on port 5001
+```
 npm start
+```
 
-# Navigate back to the root folder
+4. Run web frontend
+- Navigate back to the root folder
+```
 cd ..
-
-# Navigate to the frontend folder
+```
+- Navigate to the frontend folder
+```
 cd frontend
-
-# Install frontend dependencies
+```
+- Install frontend dependencies
+```
 npm install
-
-# Start the frontend server on port 3000
-npx next run dev
+```
+- Start the frontend server on port 3000
+```
+npm run dev
 ```
 
-Make sure the script has execute permissions:
-```bash
-chmod +x start.sh
-```
-
-
-Then, run the script:
-
-```bash
-./start.sh
-```
 
 ## Accessing the Application
 The backend server will be running on [http://localhost:5001](http://localhost:5001)
 The frontend server will be running on [http://localhost:3000](http://localhost:3000)
 
-## Terminating the Processes
-- You can either choose to run the script or execute the commands one by one in terminal. If you use the script to start the server, use the script stop.sh to kill the processes.
-
-Make sure the script has execute permissions:
-```bash
-chmod +x stop.sh
-```
-
-Then, run the script:
-
-```bash
-./stop.sh
-```
-
-    
 ## Additional Information
 
 Ensure that your MongoDB server is running before starting the application.
 The backend server is set to listen on port 5001, and the frontend server is set to listen on port 3000.
 If you encounter any issues, please check that all dependencies are correctly installed and that the MongoDB server is running as expected.
-
