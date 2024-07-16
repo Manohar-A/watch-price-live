@@ -9,6 +9,7 @@ export default function Home() {
       </Head>
       <main style={{ textAlign: "center" }}>
         <h1 style={{ marginBottom: "2rem" }}>Real-Time Stock/Crypto Prices</h1>
+        <p>Note: Data is updated every 10 seconds.</p>
         <DataTable />
       </main>
     </div>

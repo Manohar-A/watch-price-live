@@ -25,4 +25,4 @@ app.listen(PORT, () => {
 });
 
 // polling the external API every 10 seconds
-setInterval(getCoinsDataConcurrently, 50000);
+setInterval(getCoinsDataConcurrently, 10000);

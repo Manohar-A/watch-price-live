@@ -64,12 +64,21 @@ const DataTable: React.FC = () => {
     USDC: "USD COIN",
   };
 
+  if (data.length === 0) {
+    return (
+      <h1>
+        Make sure the server is Running. If the server is running, please wait
+        for the data to be fetched.
+      </h1>
+    );
+  }
+
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h3 style={{ textAlign: "center" }}>
+        <h2 style={{ textAlign: "center" }}>
           Showing Data for {COIN_TO_CODE_MAP[code]}
-        </h3>
+        </h2>
         <Button
           variant="contained"
           onClick={handleOpen}
@@ -104,10 +113,20 @@ const DataTable: React.FC = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="center">Time (Local Time)</TableCell>
-              <TableCell align="center">Rate (USD)</TableCell>
-              <TableCell align="center">Volume (USD)</TableCell>
-              <TableCell align="center">Market Cap (USD)</TableCell>
+              <TableCell align="center">
+                <strong style={{ fontWeight: "bold" }}>
+                  Time (Local Time)
+                </strong>
+              </TableCell>
+              <TableCell align="center">
+                <strong style={{ fontWeight: "bold" }}>Rate (USD)</strong>
+              </TableCell>
+              <TableCell align="center">
+                <strong style={{ fontWeight: "bold" }}>Volume (USD)</strong>
+              </TableCell>
+              <TableCell align="center">
+                <strong style={{ fontWeight: "bold" }}>Market Cap (USD)</strong>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

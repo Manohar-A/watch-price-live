@@ -36,14 +36,13 @@ const getAndStoreCoinData = async (currency: string, coin_code: string): Promise
 
             await CoinDataController.addCoinData(coinData);
             console.log('Response stored in MongoDB');
-        } else {
-            console.log(response.data);
-            console.error('Error storing response in MongoDB');
+            console.log('API call successful');
         }
-
-        console.log('API call successful');
+        else {
+            console.log('API call failed. Might be due to overhead on the API server');
+        }
     } catch (error) {
-        console.error('Error calling external API:', error);
+        console.error('Error calling external API');
     }
 };
 
@@ -51,11 +50,7 @@ const CURRENCY: string = "USD";
 
 const getCoinsDataConcurrently = async (): Promise<void> => {
     const promises = Object.keys(COIN_TO_CODE_MAP).map(async (coin: string) => {
-        try {
-            await getAndStoreCoinData(CURRENCY, COIN_TO_CODE_MAP[coin]);
-        } catch (error) {
-            console.error('Error calling external API:', error);
-        }
+            await getAndStoreCoinData(CURRENCY, COIN_TO_CODE_MAP[coin]);        
     });
 
     await Promise.all(promises);
