@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
 
 const style = {
   position: "absolute",
@@ -55,6 +56,14 @@ const DataTable: React.FC = () => {
     handleClose();
   };
 
+  const COIN_TO_CODE_MAP: Record<string, string> = {
+    BTC: "Bitcoin",
+    ETH: "Ethereum",
+    USDT: "Tether",
+    SOL: "Solana",
+    USDC: "USD COIN",
+  };
+
   return (
     <div>
       <Button variant="contained" onClick={handleOpen}>
@@ -63,12 +72,19 @@ const DataTable: React.FC = () => {
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <TextField
-            label="Stock/Crypto Code"
+            select
+            label="Stock/Crypto"
             variant="outlined"
             fullWidth
             value={code}
             onChange={handleChange}
-          />
+          >
+            {Object.entries(COIN_TO_CODE_MAP).map(([code, coin]) => (
+              <MenuItem key={code} value={code}>
+                {coin}
+              </MenuItem>
+            ))}
+          </TextField>
           <Button onClick={handleSubmit} variant="contained" sx={{ mt: 2 }}>
             Submit
           </Button>
