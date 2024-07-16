@@ -66,7 +66,10 @@ const DataTable: React.FC = () => {
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <h3 style={{ textAlign: "center" }}>
+          Showing Data for {COIN_TO_CODE_MAP[code]}
+        </h3>
         <Button
           variant="contained"
           onClick={handleOpen}
@@ -101,16 +104,16 @@ const DataTable: React.FC = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Time (Local Time)</TableCell>
-              <TableCell>Rate (USD)</TableCell>
-              <TableCell>Volume (USD)</TableCell>
-              <TableCell>Market Cap (USD)</TableCell>
+              <TableCell align="center">Time (Local Time)</TableCell>
+              <TableCell align="center">Rate (USD)</TableCell>
+              <TableCell align="center">Volume (USD)</TableCell>
+              <TableCell align="center">Market Cap (USD)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map((row: DataRow) => (
               <TableRow key={row._id}>
-                <TableCell>
+                <TableCell align="center">
                   {new Date(row.created_at).toLocaleString(undefined, {
                     hour: "numeric",
                     minute: "numeric",
@@ -118,9 +121,9 @@ const DataTable: React.FC = () => {
                     hour12: true,
                   })}
                 </TableCell>
-                <TableCell>{row.rate}</TableCell>
-                <TableCell>{row.volume}</TableCell>
-                <TableCell>{row.cap}</TableCell>
+                <TableCell align="center">{row.rate}</TableCell>
+                <TableCell align="center">{row.volume}</TableCell>
+                <TableCell align="center">{row.cap}</TableCell>
               </TableRow>
             ))}
           </TableBody>
