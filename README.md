@@ -26,10 +26,10 @@ The data is fetched from the LiveCoinWatch API. The application currently suppor
 1. Clone the repository
 ```bash
 # Clone the repository
-git clone https://github.com/your-repo/real-time-price-data-app.git
+git clone https://github.com/Manohar-A/watch-price-live.git
 
 # Navigate to the cloned repository
-cd real-time-price-data-app
+cd watch-price-live
 ```
 
 2. Ensure MongoDB is running
