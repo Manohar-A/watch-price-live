@@ -2,7 +2,7 @@ import app from './app';
 import { PORT } from './config/env';
 import getCoinsDataConcurrently from './routers/dataPolling';
 import mongoose from 'mongoose';
-import { MONGO_URI } from './config/env';
+import { MONGO_URI, DATA_POLLING_INTERVAL } from './config/env';
 
 // connect to Db
 const connectDB = async () => {
@@ -25,4 +25,4 @@ app.listen(PORT, () => {
 });
 
 // polling the external API every 10 seconds
-setInterval(getCoinsDataConcurrently, 10000);
+setInterval(getCoinsDataConcurrently, DATA_POLLING_INTERVAL);
