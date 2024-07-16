@@ -35,8 +35,6 @@ const getAndStoreCoinData = async (currency: string, coin_code: string): Promise
             };
 
             await CoinDataController.addCoinData(coinData);
-            console.log('Response stored in MongoDB');
-            console.log('API call successful');
         }
         else {
             console.log('API call failed. Might be due to overhead on the API server');
