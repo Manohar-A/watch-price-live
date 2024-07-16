@@ -7,7 +7,7 @@ const router = express.Router();
 // Define your API routes here
 router.get('/coin-data', async (req: Request, res: Response) => {
     const data = await CoinDataController.searchCoinData(new CoinDataSearchParams(req.query))
-    res.send(data);
+    res.json(data);
 });
 
 
