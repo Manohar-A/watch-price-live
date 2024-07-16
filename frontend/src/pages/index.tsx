@@ -7,8 +7,8 @@ export default function Home() {
       <Head>
         <title>Real-Time Stock/Crypto Prices</title>
       </Head>
-      <main>
-        <h1>Real-Time Stock/Crypto Prices</h1>
+      <main style={{ textAlign: "center" }}>
+        <h1 style={{ marginBottom: "2rem" }}>Real-Time Stock/Crypto Prices</h1>
         <DataTable />
       </main>
     </div>

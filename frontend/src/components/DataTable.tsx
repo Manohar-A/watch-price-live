@@ -66,9 +66,16 @@ const DataTable: React.FC = () => {
 
   return (
     <div>
-      <Button variant="contained" onClick={handleOpen}>
-        Change Stock/Crypto
-      </Button>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <Button
+          variant="contained"
+          onClick={handleOpen}
+          sx={{ alignSelf: "auto" }}
+        >
+          Change Stock/Crypto
+        </Button>
+      </div>
+
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <TextField
@@ -86,7 +93,7 @@ const DataTable: React.FC = () => {
             ))}
           </TextField>
           <Button onClick={handleSubmit} variant="contained" sx={{ mt: 2 }}>
-            Submit
+            Close
           </Button>
         </Box>
       </Modal>
@@ -94,17 +101,22 @@ const DataTable: React.FC = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Time</TableCell>
-              <TableCell>Rate</TableCell>
-              <TableCell>Volume</TableCell>
-              <TableCell>Market Cap</TableCell>
+              <TableCell>Time (Local Time)</TableCell>
+              <TableCell>Rate (USD)</TableCell>
+              <TableCell>Volume (USD)</TableCell>
+              <TableCell>Market Cap (USD)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map((row: DataRow) => (
               <TableRow key={row._id}>
                 <TableCell>
-                  {new Date(row.created_at).toLocaleString()}
+                  {new Date(row.created_at).toLocaleString(undefined, {
+                    hour: "numeric",
+                    minute: "numeric",
+                    second: "numeric",
+                    hour12: true,
+                  })}
                 </TableCell>
                 <TableCell>{row.rate}</TableCell>
                 <TableCell>{row.volume}</TableCell>
