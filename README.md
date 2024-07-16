@@ -20,7 +20,6 @@ The data is fetched from the LiveCoinWatch API. The application currently suppor
 ├── frontend
 │   ├── package.json
 │   ├── ...
-├── start.sh
 └── README.md
 ```
 ## Installation and Running the Application
